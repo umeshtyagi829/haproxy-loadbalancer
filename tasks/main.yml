@@ -1,0 +1,19 @@
+# tasks file for loadbalancer
+
+- name: "Install package"
+  package:
+          name: "haproxy"
+          state: present
+
+- name: "Copy Template file Name haproxy.cfg"
+  template:
+          src: "/root/Ansible-Playbook/HA-Proxy/Haproxy-with-role/haproxy.cfg"
+          dest: "/etc/haproxy/haproxy.cfg"
+
+- name: "restart haproxy"
+  service:
+     name: "haproxy"
+     state: "started"
+
+
+
